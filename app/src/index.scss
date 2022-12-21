@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  list-style: decimal;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 50px;
+
+  &__inner {
+    max-width: 500px;
+    width: 100%;
+
+    form {
+      padding-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        padding: 15px;
+        outline: none;
+      }
+
+      button {
+        padding: 15px;
+      }
+    }
+  }
+}
