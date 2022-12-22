@@ -1,5 +1,5 @@
 import React from "react";
-import {Words} from "../constants";
+import {Words} from "../sidorina-constants";
 
 export const CurrentLessonCard = (repeatingLesson) => {
     return (
