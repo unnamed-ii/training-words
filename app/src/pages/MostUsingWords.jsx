@@ -1,17 +1,6 @@
 import React, {useState} from "react";
 import {MostUsingWordsData} from "../most-using-words-constants";
-
-export const MostUsingWordsForm = ({prevPage, nextPage, repeatingPage}) => {
-    return (
-        <>
-            <form>
-                <button onClick={(e) => prevPage(e)}>Previous Page</button>
-                <span>Current Page: <b>{repeatingPage}</b></span>
-                <button onClick={(e) => nextPage(e)}>Next Page</button>
-            </form>
-        </>
-    )
-}
+import {MostUsingWordsForm} from "../components/MostUsingWordsForm";
 
 function MostUsingWords() {
     const [repeatingPage, setRepeatingPage] = useState('1')
