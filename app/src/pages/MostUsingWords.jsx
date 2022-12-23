@@ -71,10 +71,10 @@ const first50Words = [
 function MostUsingWords() {
     const [currentShowing50words, setCurrentShowing50words] = useState(first50Words)
     const [currentPage, setCurrentPage] = useState(1)
+    let startingWord = currentPage === 1 ? 0 : currentPage * 50;
+    let finishingWord = currentPage === 1 ? currentPage * 50 : (currentPage + 1) * 50;
 
     const cuttingData = () => {
-        let startingWord = currentPage === 1 ? 1 : currentPage * 50;
-        let finishingWord = currentPage === 1 ? currentPage * 50 : (currentPage + 1) * 50;
         let currentArrOfWords = []
 
         for (let i = startingWord; i < finishingWord; i++){
