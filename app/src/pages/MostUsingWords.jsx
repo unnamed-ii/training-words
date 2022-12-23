@@ -1,101 +1,31 @@
 import React, {useState} from "react";
 import {MostUsingWordsData} from "../most-using-words-constants";
 
-export const MostUsingWordsForm = ({prevPage, nextPage, currentPage}) => {
+export const MostUsingWordsForm = ({prevPage, nextPage, repeatingPage}) => {
     return (
         <>
             <form>
                 <button onClick={(e) => prevPage(e)}>Previous Page</button>
-                <span>Current Page: <b>{currentPage}</b></span>
+                <span>Current Page: <b>{repeatingPage}</b></span>
                 <button onClick={(e) => nextPage(e)}>Next Page</button>
             </form>
         </>
     )
 }
 
-
-const first50Words = [
-    'insanlar - люди',
-    'adam - мужчина',
-    'kadın - женщина',
-    'çocuk - ребенок',
-    'oğlan - мальчик',
-    'kız - девочка; дочь',
-    'arkadaş - друг',
-    'konuk - гость',
-    'alıcı - покупатель',
-    'aile - семья',
-    'ebeveyn - родители',
-    'baba  - отец',
-    'anne - мать',
-    'kocam - муж',
-    'karısı - жена',
-    'oğul - сын',
-    'dede - дед',
-    'nine - бабушка',
-    'kayınpeder - тесть / свекор',
-    'kayınvalide - теща / свекровь',
-    'amca - дядя',
-    'teyze - тетя',
-    'kardeş - брат; сестра',
-    'kuzen - двоюродный брат, двоюродная сестра',
-    'iş - работа',
-    'öğretmen - учитель',
-    'sürücü - водитель',
-    'işçi - рабочий',
-    'mühendis - инженер',
-    'doktor - врач',
-    'hemşire - медсестра',
-    'tezgâhtar - продавец',
-    'muhasebeci - бухгалтер',
-    'sanatçı - художник',
-    'öğrenci - студент, школьник',
-    'ülke - страна',
-    'Rusya - Россия',
-    'Türkiye - Турция',
-    'hayvan - животное',
-    'kedi - кошка',
-    'köpek - собака',
-    'kuş - птица',
-    'şehir - город',
-    'okul - школа',
-    'üniversite - университет',
-    'tiyatro - театр',
-    'sokak - улица',
-    'meydan - площадь',
-    'ev - дом',
-    'kilise - церковь',
-    'cami - мечеть',
-]
-
 function MostUsingWords() {
-    const [currentShowing50words, setCurrentShowing50words] = useState(first50Words)
-    const [currentPage, setCurrentPage] = useState(1)
-    let startingWord = currentPage === 1 ? 0 : currentPage * 50;
-    let finishingWord = currentPage === 1 ? currentPage * 50 : (currentPage + 1) * 50;
-
-    const cuttingData = () => {
-        let currentArrOfWords = []
-
-        for (let i = startingWord; i < finishingWord; i++){
-            currentArrOfWords.push(MostUsingWordsData[i])
-        }
-
-        setCurrentShowing50words(currentArrOfWords);
-    }
+    const [repeatingPage, setRepeatingPage] = useState('1')
 
     const nextPage = (e) => {
         e.preventDefault();
-        let numOfPage = currentPage < 11 ? currentPage + 1 : currentPage;
-        setCurrentPage(numOfPage)
-        cuttingData()
+        let pageNumber = repeatingPage < 10 ? String(+repeatingPage + 1) : '1'
+        setRepeatingPage(pageNumber)
     }
 
     const prevPage = (e) => {
         e.preventDefault();
-        let numOfPage = currentPage > 1 ? currentPage - 1 : currentPage;
-        setCurrentPage(numOfPage)
-        cuttingData()
+        let pageNumber = repeatingPage > 1 ? String(+repeatingPage - 1) : '10'
+        setRepeatingPage(pageNumber)
     }
 
     return (
@@ -106,11 +36,11 @@ function MostUsingWords() {
                     <MostUsingWordsForm
                         nextPage={nextPage}
                         prevPage={prevPage}
-                        currentPage={currentPage}
+                        repeatingPage={repeatingPage}
                     />
                     <ul>
-                        {currentShowing50words.map(word => (
-                            <li>
+                        {MostUsingWordsData[repeatingPage].map(word => (
+                            <li key={Math.floor(Math.random() * 1000000)}>
                                 {word}
                             </li>
                         ))}
