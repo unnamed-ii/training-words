@@ -3,7 +3,7 @@ import {Words} from "../sidorina-constants";
 
 export const CurrentLessonCard = (repeatingLesson) => {
     return (
-        <div className={"lesson-" + repeatingLesson.repeatingLesson}>
+        <div>
             <h1>{`Ders ${repeatingLesson.repeatingLesson}`}</h1>
             <ul>
                 {Words[repeatingLesson.repeatingLesson].map(word => (

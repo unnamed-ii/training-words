@@ -1,4 +1,4 @@
-export const MostUsingWords = [
+export const MostUsingWordsData = [
     'insanlar - люди',
     'adam - мужчина',
     'kadın - женщина',
